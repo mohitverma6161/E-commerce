@@ -1,0 +1,188 @@
+-- phpMyAdmin SQL Dump
+-- version 3.5.2.2
+-- http://www.phpmyadmin.net
+--
+-- Host: 127.0.0.1
+-- Generation Time: Mar 25, 2017 at 12:15 PM
+-- Server version: 5.5.27
+-- PHP Version: 5.4.7
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Database: `ecommerce`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admins`
+--
+
+CREATE TABLE IF NOT EXISTS `admins` (
+  `user_id` int(10) NOT NULL AUTO_INCREMENT,
+  `user_email` varchar(255) NOT NULL,
+  `user_pass` varchar(255) NOT NULL,
+  PRIMARY KEY (`user_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `admins`
+--
+
+INSERT INTO `admins` (`user_id`, `user_email`, `user_pass`) VALUES
+(1, 'nehal.arshad@gmail.com', '111211'),
+(2, 'nehal.arshad@hotmail.com', '123456');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `brands`
+--
+
+CREATE TABLE IF NOT EXISTS `brands` (
+  `brand_id` int(100) NOT NULL AUTO_INCREMENT,
+  `brand_title` varchar(200) NOT NULL,
+  PRIMARY KEY (`brand_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+
+--
+-- Dumping data for table `brands`
+--
+
+INSERT INTO `brands` (`brand_id`, `brand_title`) VALUES
+(1, 'HP'),
+(2, 'DELL'),
+(4, 'xomi'),
+(6, 'Apple'),
+(7, 'sony'),
+(8, 'nokia'),
+(9, 'Adidas'),
+(10, 'vanhusain');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cart`
+--
+
+CREATE TABLE IF NOT EXISTS `cart` (
+  `p_id` int(10) NOT NULL,
+  `ip_add` varchar(255) NOT NULL,
+  ` qty` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cart`
+--
+
+INSERT INTO `cart` (`p_id`, `ip_add`, ` qty`) VALUES
+(5, '::1', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `categories`
+--
+
+CREATE TABLE IF NOT EXISTS `categories` (
+  `cat_id` int(100) NOT NULL AUTO_INCREMENT,
+  `cat_title` text NOT NULL,
+  PRIMARY KEY (`cat_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
+
+--
+-- Dumping data for table `categories`
+--
+
+INSERT INTO `categories` (`cat_id`, `cat_title`) VALUES
+(1, 'Laptops'),
+(2, 'Cameras'),
+(3, 'Mobiles'),
+(4, 'Computers'),
+(5, 'Ipads'),
+(6, 'Iphones'),
+(10, 'Apple'),
+(11, 'clouthing');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `customers`
+--
+
+CREATE TABLE IF NOT EXISTS `customers` (
+  `customer_id` int(10) NOT NULL AUTO_INCREMENT,
+  `customer_ip` varchar(255) NOT NULL,
+  `customer_name` varchar(50) NOT NULL,
+  `customer_email` varchar(100) NOT NULL,
+  `customer_pass` varchar(100) NOT NULL,
+  `customer_country` varchar(50) NOT NULL,
+  `customer_city` varchar(30) NOT NULL,
+  `customer_contact` varchar(255) NOT NULL,
+  `customer_address` varchar(200) NOT NULL,
+  `customer_image` text NOT NULL,
+  PRIMARY KEY (`customer_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+
+--
+-- Dumping data for table `customers`
+--
+
+INSERT INTO `customers` (`customer_id`, `customer_ip`, `customer_name`, `customer_email`, `customer_pass`, `customer_country`, `customer_city`, `customer_contact`, `customer_address`, `customer_image`) VALUES
+(2, '::1', 'arshad', 'nehal.arshad@gmail.com', '111211', 'India', 'patna', '9097212644', 'ooficer flat z-1,shastri nagar thana', 'DSC_2702.jpg'),
+(3, '::1', 'azhar', 'nehal.arshad@hotmail.com', '111211', 'India', 'patna', '9097212644', 'ooficer flat z-1,shastri nagar thana', '20130613_074352.jpg'),
+(4, '::1', 'chandan kumar', 'chandanokumar@gmil.com', '7277557743', 'India', 'patna', '7277557743', 'mithapur', '81RVxZOyxOL._SL1500_.jpg'),
+(5, '::1', 'azhar', 'nehal.azhar@gmail.com', '1234567', 'India', 'patna', '9097212644', 'ooficer flat z-1,shastri nagar thana', '20130613_074352.jpg'),
+(6, '::1', 'omama', 'omama@gmail.com', '19001', 'India', 'delhi', '9811898482', 'shipra rivera', 'DSC_2702.jpg'),
+(7, '::1', 'ashraf ali', 'ashraf19204@gmail.com', '8757780000', 'India', 'patna', '9199200737', 'chatarghat', ''),
+(8, '::1', 'tauseef raza', 'tauseef94', '91brgaya', 'India', 'gaya', '8966996139', 'gaya', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `products`
+--
+
+CREATE TABLE IF NOT EXISTS `products` (
+  `product_id` int(100) NOT NULL AUTO_INCREMENT,
+  `product_cat` varchar(100) NOT NULL,
+  `product_brand` varchar(100) NOT NULL,
+  `product_title` varchar(255) NOT NULL,
+  `product_price` varchar(100) NOT NULL,
+  `product_desc` text NOT NULL,
+  `product_image` text NOT NULL,
+  `product_keywords` text NOT NULL,
+  PRIMARY KEY (`product_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=32 ;
+
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`product_id`, `product_cat`, `product_brand`, `product_title`, `product_price`, `product_desc`, `product_image`, `product_keywords`) VALUES
+(5, '4', 'brand_id', 'Apple', '150000', 'this is apple computer', '81RVxZOyxOL._SL1500_.jpg', 'Apple'),
+(6, '2', 'brand_id', 'samsung camera', '90000', 'camera', 'Sony-F5-F55-Side-Angle-e1351587138578.jpg', 'samsung'),
+(9, '1', 'brand_id', 'hp laptop', '75000', 'this is hp laptop', 'dsnew-laptop-drawer-6-2.jpg', 'hp laptop news'),
+(14, '2', 'brand_id', 'Toshiba camera', '60000', 'this is a great camera', 'D3S_0732-0600.jpg', 'toshiba and camera'),
+(15, '3', 'brand_id', 'apple tablet', '54000', 'this is apple table not LG mobile', 'hero_ipad_family_2015_2x.jpg', 'lg mobile'),
+(18, '2', '4', 'camera', '78000', 'jhavg', 'Live-Steaming-Cameras-SDI-300x300.jpg', 'camera'),
+(21, '3', '4', 'samsung', '45000', '<p>this is &nbsp;new branded mobile&nbsp;</p>', '35806_04_iphone_6_rumored_for_a_july_launch_with_ios_8_on_board.jpg', 'new arive'),
+(23, '11', '9', 't-shirt', '1500', '', 'Screenshot_2017-01-16-22-33-57.png', ''),
+(24, '11', '9', 't-shirt', '1200', '', 'Screenshot_2017-01-16-22-34-03.png', ''),
+(25, '11', '9', 't-shirt', '1400', '', 'Screenshot_2017-01-16-22-34-07.png', ''),
+(26, '11', '9', 't-shirt', '600', '', 'Screenshot_2017-01-16-22-34-12.png', ''),
+(29, '11', '9', 't-shirt', '1700', '', 'Screenshot_2017-01-16-22-34-17.png', ''),
+(30, '11', '9', 't-shirt', '1500', '', 'Screenshot_2017-01-16-22-34-26.png', ''),
+(31, '11', '9', 't-shirt', '2000', '', 'Screenshot_2017-01-16-22-34-21.png', '');
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
